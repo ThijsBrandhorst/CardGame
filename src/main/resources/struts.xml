@@ -9,13 +9,18 @@
 
 	<package name="default" extends="struts-default">
 
-		<!-- <interceptors> <interceptor-stack name="appDefault"> <interceptor-ref 
-			name="timer" /> <interceptor-ref name="logger" /> <interceptor-ref name="defaultStack" 
-			/> </interceptor-stack> </interceptors> <default-interceptor-ref name="appDefault" 
-			/> -->
+<!--  		<interceptors>
+			<interceptor-stack name="appDefault">
+				<interceptor-ref name="timer" />
+				<interceptor-ref name="logger" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="appDefault" />
+-->
 
-		<action name="higher" class="actions.GameAction"
-			method="higher">
+		<action name="higher" class="actions.GameAction" method="higher">
 			<result name="success">/game.jsp</result>
 			<result name="gameover">/gameover.jsp</result>
 		</action>
@@ -24,21 +29,12 @@
 			<result name="success">/game.jsp</result>
 			<result name="gameover">/gameover.jsp</result>
 		</action>
-
+		
 		<action name="setup" class="actions.GameAction" method="setup">
 			<result name="success">/game.jsp</result>
 		</action>
-
+		
 		<action name="save" class="actions.SaveAction" method="save">
-			<result>/index.jsp</result>
-		</action>
-
-		<action name="restart" class="actions.GameAction"
-			method="setup">
-			<result name="success">/game.jsp</result>
-		</action>
-
-		<action name="mainMenu">
 			<result>/index.jsp</result>
 		</action>
 

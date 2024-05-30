@@ -1,46 +1,47 @@
 body {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-	background-image: url("../images/mainbackground.webp");
-    background-size: cover;
-    background-position: center;
-    margin: 0;
-    font-family: 'MedievalSharp';font-size: 22px;
-}
-
-.start-menu {
-    background: rgba(255, 255, 255, 0.9);
-    border: 5px solid #8B4513;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-    padding: 30px;
-    text-align: center;
-    max-width: 400px;
-    z-index: 1;
-}
-
-.start-menu h1 {
-    color: #8B4513;
-    margin-bottom: 20px;
-}
-
-.start-menu a {
-    text-decoration: none;
-}
-
-.start-button {
-    background-color: #D2691E;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    font-size: 18px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.start-button:hover {
-    background-color: #A0522D;
-}
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Adjust background properties */
+            background-image: url("${pageContext.request.contextPath}/images/Background.jpg");
+            background-size: cover;
+            background-position: center;
+            margin: 0; /* Ensure no default margins */
+        }
+        .start-menu {
+            background: rgba(255, 255, 255, 0.9);
+            border: 5px solid #8B4513;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            text-align: center;
+            max-width: 400px;
+            z-index: 1; /* Ensure it's above background */
+        }
+        .start-menu h1 {
+            font-family: 'Old Western', serif;
+            color: #8B4513;
+            margin-bottom: 20px;
+        }
+        .start-menu a {
+            text-decoration: none;
+        }
+        .start-button {
+            background-color: #D2691E;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: 'Old Western', serif;
+        }
+        .start-button:hover {
+            background-color: #A0522D;
+        }
+        @font-face {
+            font-family: 'Old Western';
+            src: url('https://www.example.com/fonts/OldWestern.ttf');
+        }
