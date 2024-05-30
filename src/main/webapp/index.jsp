@@ -15,7 +15,7 @@
             align-items: center;
             justify-content: center;
             /* Adjust background properties */
-            background-image: url("${pageContext.request.contextPath}/images/Background.jpg");
+            background-image: url("${pageContext.request.contextPath}/images/mainbackground.webp");
             background-size: cover;
             background-position: center;
             margin: 0; /* Ensure no default margins */
