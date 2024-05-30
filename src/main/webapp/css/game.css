@@ -4,6 +4,9 @@
 body {
 	font-family: 'Roboto', sans-serif;
 	overflow: hidden;
+	background-image: url("../images/background2.webp");
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 img {
@@ -13,6 +16,7 @@ img {
 
 i {
 	font-size: 200px;
+	color: white;
 }
 
 .card {
@@ -30,7 +34,6 @@ i {
 }
 
 .btn-custom-higher {
-	background-color: rgb(103, 190, 57);
 	border-bottom: none;
 	border-top: none;
 	border-right: 2px solid #000;
@@ -38,7 +41,6 @@ i {
 }
 
 .btn-custom-lower {
-	background-color: rgb(69, 163, 229);
 	border-bottom: none;
 	border-top: none;
 	border-right: none;
@@ -48,14 +50,6 @@ i {
 .btn-custom-higher, .btn-custom-lower {
 	color: rgba(0, 0, 0, 0.5);
 	transition: 0.5s;
-}
-
-.btn-custom-higher:hover {
-	background-color: rgb(95, 176, 53);
-}
-
-.btn-custom-lower:hover {
-	background-color: rgb(63, 151, 212);
 }
 
 .btn-custom-higher:hover, .btn-custom-lower:hover {
