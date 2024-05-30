@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 <%@page import="data.Database"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+=======
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+>>>>>>> 7881864e77168cb98b7f0ff4102284e62fc23f1c
 <%@ page import="actions.GameAction"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
@@ -135,6 +139,7 @@
 				<div class="modal-body text-center">
 					<table class="table">
 						<thead>
+<<<<<<< HEAD
 							<tr>
 								<th scope="col">#</th>
 								<th scope="col">Naam</th>
@@ -153,6 +158,21 @@
 				</div>
 			</div>
 		</div>
+=======
+						    <tr>
+						      <th scope="col">#</th>
+						      <th scope="col">Naam</th>
+						      <th scope="col">Score</th>
+						    </tr>
+						  </thead>
+						</table>
+      				</div>
+      			<div class="modal-footer justify-content-center">
+        			<button type="button" class="btn btn-secondary border border-dark col-2" data-bs-dismiss="modal">Close</button>
+      			</div>
+    		</div>
+  		</div>
+>>>>>>> 7881864e77168cb98b7f0ff4102284e62fc23f1c
 	</div>
 	<!-- Leaderboard modal -->
 

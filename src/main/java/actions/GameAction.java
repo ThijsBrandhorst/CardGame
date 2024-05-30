@@ -6,15 +6,12 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import cardgame.Game;
 import cardgame.Game.HigherOrLower;
-import data.Database;
 import freemarker.log.Logger;
 
 public class GameAction extends ActionSupport {
 	
 	private Logger log = Logger.getLogger(GameAction.class.getName());
 	private static Game game;
-	private Database db = Database.getinstance();
-	private Connection conn = db.getConnection();
 	
 	public String higher() {
 		
@@ -41,8 +38,6 @@ public class GameAction extends ActionSupport {
 	public String setup() {
 		game = new Game();
 		game.setup();
-		db.maakDB(conn);
-		db.maakTabel(conn);
 		return SUCCESS;
 	}
 	
