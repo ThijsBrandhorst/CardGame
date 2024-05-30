@@ -1,4 +1,3 @@
-<%@page import="data.Database"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="actions.GameAction"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -122,9 +121,6 @@
 						      <th scope="col">Score</th>
 						    </tr>
 						  </thead>
-						  <tbody>
-						    <%= Database.getinstance().displayLeaderboard(Database.getinstance().getConnection()) %>
-						  </tbody>
 						</table>
       				</div>
       			<div class="modal-footer justify-content-center">
