@@ -11,7 +11,7 @@ public class Deck {
 	public Deck() {
 		for (Suit s : Suit.values()) {
 			for (Value v : Value.values()) {
-				Card card = new Card(s, v, "images/cards/" + s + v + ".png");
+				Card card = new Card(s, v, "images/" + s + v + ".png");
 				cards.add(card);
 			}
 		}

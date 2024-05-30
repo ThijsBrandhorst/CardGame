@@ -9,6 +9,17 @@
 
 	<package name="default" extends="struts-default">
 
+<!--  		<interceptors>
+			<interceptor-stack name="appDefault">
+				<interceptor-ref name="timer" />
+				<interceptor-ref name="logger" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="appDefault" />
+-->
+
 		<action name="higher" class="actions.GameAction" method="higher">
 			<result name="success">/game.jsp</result>
 			<result name="gameover">/gameover.jsp</result>
