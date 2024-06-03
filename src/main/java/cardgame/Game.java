@@ -21,16 +21,14 @@ public class Game {
 			return true;
 		}
 		
-		currentCard = deck.getNextCard();
-		nextCard = deck.getNextCard();
-		if (score > 0)
-			score--;
-		return true;
+		// Wrong guess, game over
+		return false;
 	}
 	
 	public void setup() {
 		currentCard = deck.getNextCard();
 		nextCard = deck.getNextCard();
+		score = 0; // Initialize the score to 0 when setting up the game
 	}
 	
 	public int getScore() {
@@ -44,5 +42,4 @@ public class Game {
 	public Card getNextCard() {
 		return nextCard;
 	}
-	
 }
