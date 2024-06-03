@@ -27,11 +27,11 @@
 		class="container-fluid position-absolute d-flex justify-content-end">
 		<button type="button" class="btn mt-3" data-bs-toggle="modal"
 			data-bs-target="#leaderboardModal">
-			<img src="images/star-icon.png">
+			<img src="images/leaderboard.png">
 		</button>
 		<button type="button" class="btn mt-3" data-bs-toggle="modal"
 			data-bs-target="#infoModal">
-			<img src="images/info-icon.png">
+			<img src="images/info.png">
 		</button>
 	</div>
 	<!-- Menu btns -->
