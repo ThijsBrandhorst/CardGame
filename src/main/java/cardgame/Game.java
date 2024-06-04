@@ -1,11 +1,38 @@
 package cardgame;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import database.factories.DAOFactory;
+
+@Entity
+@Table(name = "game")
 public class Game {
 	 
-	private int score;
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Integer id;
+	
+	@Column(name = "game_name")
+	@OneToMany(mappedBy="game")
+	private List<Score> scores;
+	
+	@Transient
 	private Card currentCard;
+	@Transient
 	private Card nextCard;
+	@Transient
 	private Deck deck = new Deck();
+	
 	public enum HigherOrLower {HIGHER, LOWER};
 	
 	public boolean gameTurn(HigherOrLower higherOrLower) {
@@ -17,7 +44,7 @@ public class Game {
 			higherOrLower == HigherOrLower.LOWER && !nextCard.isHigherOrEqual(currentCard)) {
 			currentCard = deck.getNextCard();
 			nextCard = deck.getNextCard();
-			score++;
+			scores.add(new Score(this, this.getScores().get(this.getScores().size() - 1).getScore() + 1));
 			return true;
 		}
 		
@@ -28,11 +55,16 @@ public class Game {
 	public void setup() {
 		currentCard = deck.getNextCard();
 		nextCard = deck.getNextCard();
-		score = 0; // Initialize the score to 0 when setting up the game
+		scores = new ArrayList<>();
+		scores.add(new Score(this, 0));
 	}
 	
-	public int getScore() {
-		return score;
+	public List<Score> getScores() {
+		return scores;
+	}
+	
+	public void setScores(List<Score> scores) {
+		this.scores = scores;
 	}
 	
 	public Card getCurrentCard() {
@@ -42,4 +74,12 @@ public class Game {
 	public Card getNextCard() {
 		return nextCard;
 	}
+	
+    @Override
+	public String toString() {
+		return "" + scores.get(scores.size() - 1);
+	}
+	public void save() {
+		DAOFactory.getTheFactory().getGameDAO().saveOrUpdate(this);
+    }
 }

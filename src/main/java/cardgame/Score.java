@@ -5,33 +5,58 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+
+import database.factories.DAOFactory;
 
 @Entity
-@Table(name = "score", uniqueConstraints = {@UniqueConstraint(columnNames = "ID")})
+@Table(name = "scores")
 public class Score {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Integer id;
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "id", insertable = false, updatable = false)
+	private Game game;
+    
+	@Column(name = "score")
+    private int score;
 	
-	@Column(name = "name", nullable =  false)
+	@Column(name = "name")
 	private String name;
-
-	@Column(name = "score", nullable =  false)
-	private Integer score;
-	
-	
-	public Score() {
-		
-	}
-	
-	public Score(Integer id, String name, Integer score) {
-		super();
-		this.id = id;
-		this.name = name;
+    
+    
+	public Score(Game game, int score) {
+		this.game = game;
 		this.score = score;
 	}
+    
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+    
+    @Override
+	public String toString() {
+		return "" + score;
+	}
+    
+	public void save() {
+		DAOFactory.getTheFactory().getScoreDAO().saveOrUpdate(this);
+    }
 }

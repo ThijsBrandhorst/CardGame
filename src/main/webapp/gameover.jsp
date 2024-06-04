@@ -17,7 +17,7 @@
 		<h1>Game Over</h1>
 		<p>
 			Your Last Score:
-			<%=GameAction.getGame().getScore()%></p>
+			<%=GameAction.getGame().getScores()%></p>
 		<s:a action="restart">Restart Game</s:a>
 		<s:a action="mainMenu">Main Menu</s:a>
 	</div>
