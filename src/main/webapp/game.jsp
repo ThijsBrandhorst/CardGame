@@ -80,11 +80,10 @@
 					<p class="text-center">
 						<strong>Gameplay:</strong>
 					</p>
-					<p class="text-center">Er wordt een kaart getoond, aan jou de
-						taak om de juiste keuze te maken: zal de volgende kaart hoger of
-						lager zijn? Klik op de pijl omhoog voor "hoger" of op de pijl
-						omlaag voor "lager". Probeer zoveel mogelijk juiste antwoorden te
-						geven en kom op het leaderboard terecht! Veel succes!!</p>
+					<p class="text-center">There will be a card presented in front
+						of you, you will need to guess if the next card will be of higher
+						or lower value then the card presented using the two buttons on
+						the left and right side of the screen. Good luck.</p>
 					<hr>
 					<div class="row">
 						<p class="text-center">
@@ -92,23 +91,23 @@
 						</p>
 						<div class="col d-flex justify-content-end">
 							<ul class="p-0">
-								<li>Twee - 2</li>
-								<li>Drie - 3</li>
-								<li>Vier - 4</li>
-								<li>Vijf - 5</li>
-								<li>Zes - 6</li>
-								<li>Zeven - 7</li>
-								<li>Acht - 8</li>
+								<li>Two - 2</li>
+								<li>Three - 3</li>
+								<li>Four - 4</li>
+								<li>Five - 5</li>
+								<li>Six - 6</li>
+								<li>Seven - 7</li>
+								<li>Eight - 8</li>
 							</ul>
 						</div>
 						<div class="col d-flex justify-content-start">
 							<ul class="p-0 ms-3">
-								<li>Negen - 9</li>
-								<li>Tien - 10</li>
-								<li>Boer - 11</li>
-								<li>Koningin - 12</li>
-								<li>Koning - 13</li>
-								<li>Aas - 14</li>
+								<li>Nine - 9</li>
+								<li>Ten - 10</li>
+								<li>Jack - 11</li>
+								<li>Queen - 12</li>
+								<li>King - 13</li>
+								<li>Ace - 14</li>
 							</ul>
 						</div>
 					</div>
