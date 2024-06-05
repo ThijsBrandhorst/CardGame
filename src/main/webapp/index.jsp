@@ -13,11 +13,13 @@
 </head>
 <body>
 	<div class="start-menu">
-		<h1>Welcome to Medieval Cards</h1>
-		<a href="<s:url action='setup' />">
-			<button class="start-button">Start Game</button>
-		</a>
-	</div>
+        <h1>Welcome to Medieval Cards</h1>
+        <form action="<s:url action='setup' />" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <button type="submit" class="start-button">Start Game</button>
+        </form>
+    </div>
 	
 
 	

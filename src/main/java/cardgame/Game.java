@@ -3,6 +3,10 @@ package cardgame;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
+
 import database.factories.DAOFactory;
 
 @Entity
@@ -22,6 +26,8 @@ public class Game {
     private Card nextCard;
     @Transient
     private Deck deck = new Deck();
+    @Transient
+    private String playerName;
 
     public enum HigherOrLower { HIGHER, LOWER }
 
@@ -34,17 +40,17 @@ public class Game {
             currentCard = deck.getNextCard();
             nextCard = deck.getNextCard();
             int newScore = scores.isEmpty() ? 1 : scores.get(scores.size() - 1).getScore() + 1;
-            scores.add(new Score(this, newScore));
+            scores.add(new Score(this, playerName, newScore));
             return true;
         }
 
         return false;
     }
 
-    public void setup() {
+    public void setup(String playerName) { // Updated method signature to accept playerName
+        this.playerName = playerName;  // Initialize playerName
         currentCard = deck.getNextCard();
         nextCard = deck.getNextCard();
-        // No initial score is added here
     }
 
     public List<Score> getScores() {
@@ -88,6 +94,8 @@ public class Game {
 
     public void saveFinalScore(String playerName) {
         if (!scores.isEmpty()) {
+        	HttpServletRequest request = ServletActionContext.getRequest();
+            playerName = request.getParameter("name");
             Score highestScore = scores.get(scores.size() - 1);
             highestScore.setPlayerName(playerName);
             System.out.println("Saving final high score: " + highestScore.getScore());
