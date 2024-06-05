@@ -42,7 +42,7 @@
 		class="container fs-1 fw-bold text-white position-absolute top-50 start-50 translate-middle"
 		style="pointer-events: none;">
 		<div class="row d-flex justify-content-center mb-4">
-			<%=GameAction.getGame().getScore()%>
+			<%=GameAction.getGame().getLastDigitOfScore()%>
 		</div>
 		<div class="row d-flex justify-content-center mt-4">
 			<img src="<%=GameAction.getGame().getCurrentCard().getUrl()%>"

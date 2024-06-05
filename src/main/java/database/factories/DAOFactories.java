@@ -1,9 +1,5 @@
 package database.factories;
 
-import database.factories.DAOFactory;
-import database.factories.HibernateDAOfactory;
-
-
 public enum DAOFactories {
 
 	HIBERNATE(HibernateDAOfactory.class);

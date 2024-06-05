@@ -2,6 +2,7 @@ package database.factories;
 
 import java.lang.reflect.InvocationTargetException;
 
+import database.interfaces.IGameDAO;
 import database.interfaces.IScoreDAO;
 
 public abstract class DAOFactory {
@@ -29,6 +30,7 @@ public abstract class DAOFactory {
 		}
 	}
 
+	public abstract IGameDAO getGameDAO();
 	public abstract IScoreDAO getScoreDAO();
 
 	

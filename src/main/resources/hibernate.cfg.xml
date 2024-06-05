@@ -22,6 +22,7 @@
 		<!-- Add annotated resources here -->
 		
 		<mapping class="cardgame.Score"/>
+		<mapping class="cardgame.Game"/>
 		
 
 

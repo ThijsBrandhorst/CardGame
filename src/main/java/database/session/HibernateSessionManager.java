@@ -1,5 +1,7 @@
+/**
+ *
+ */
 package database.session;
-
 
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
@@ -20,7 +22,7 @@ public class HibernateSessionManager {
 	 * hibernate.properties.
 	 */
 	static {
-		
+
         if (sessionFactory == null) {
             try {
                 // Create registry
@@ -42,12 +44,12 @@ public class HibernateSessionManager {
                 }
             }
         }
-		
+
 	}
 
 	/**
 	 * Static method to get to open a session using the factory.
-	 * 
+	 *
 	 * @return a Session object for database transactions.
 	 * @throws HibernateException
 	 */
