@@ -3,10 +3,6 @@ package cardgame;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts2.ServletActionContext;
-
 import database.factories.DAOFactory;
 
 @Entity
@@ -32,11 +28,10 @@ public class Game {
     public enum HigherOrLower { HIGHER, LOWER }
 
     public boolean gameTurn(HigherOrLower higherOrLower) {
-        if (!deck.areCardsLeft())
-            return false;
+        if (!deck.areCardsLeft()) return false;
 
-        if (higherOrLower == HigherOrLower.HIGHER && nextCard.isHigherOrEqual(currentCard) || 
-            higherOrLower == HigherOrLower.LOWER && !nextCard.isHigherOrEqual(currentCard)) {
+        if ((higherOrLower == HigherOrLower.HIGHER && nextCard.isHigherOrEqual(currentCard)) || 
+            (higherOrLower == HigherOrLower.LOWER && !nextCard.isHigherOrEqual(currentCard))) {
             currentCard = deck.getNextCard();
             nextCard = deck.getNextCard();
             int newScore = scores.isEmpty() ? 1 : scores.get(scores.size() - 1).getScore() + 1;
@@ -47,8 +42,8 @@ public class Game {
         return false;
     }
 
-    public void setup(String playerName) { // Updated method signature to accept playerName
-        this.playerName = playerName;  // Initialize playerName
+    public void setup(String playerName) {
+        this.playerName = playerName;
         currentCard = deck.getNextCard();
         nextCard = deck.getNextCard();
     }
@@ -88,17 +83,14 @@ public class Game {
 
     public void save() {
         System.out.println("Saving game with scores: " + scores);
-        this.id = 1; // Set the ID explicitly to 1
         DAOFactory.getTheFactory().getGameDAO().saveOrUpdate(this);
     }
 
-    public void saveFinalScore(String playerName) {
+    public void saveFinalScore() {
         if (!scores.isEmpty()) {
-        	HttpServletRequest request = ServletActionContext.getRequest();
-            playerName = request.getParameter("name");
             Score highestScore = scores.get(scores.size() - 1);
-            highestScore.setPlayerName(playerName);
-            System.out.println("Saving final high score: " + highestScore.getScore());
+            highestScore.setPlayerName(this.playerName);  // Use the playerName from the game instance
+            System.out.println("Saving final high score: " + highestScore.getScore() + ", player name: " + highestScore.getPlayerName());
             DAOFactory.getTheFactory().getScoreDAO().saveOrUpdate(highestScore);
         }
     }
