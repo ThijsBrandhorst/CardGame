@@ -10,9 +10,8 @@ import database.factories.DAOFactory;
 public class Game {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Integer id = 1;
 
     @OneToMany(mappedBy = "game", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Score> scores = new ArrayList<>();
@@ -64,6 +63,14 @@ public class Game {
         return nextCard;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "" + (scores.isEmpty() ? 0 : scores.get(scores.size() - 1));
@@ -75,6 +82,7 @@ public class Game {
 
     public void save() {
         System.out.println("Saving game with scores: " + scores);
+        this.id = 1; // Set the ID explicitly to 1
         DAOFactory.getTheFactory().getGameDAO().saveOrUpdate(this);
     }
 
