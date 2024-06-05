@@ -1,40 +1,32 @@
 package cardgame;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
-import database.factories.DAOFactory;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "scores")
+@Table(name = "high_scores")
 public class Score {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(name = "score")
+    private int score;
+
+    @Column(name = "player_name")
+    private String playerName;
     
     @ManyToOne(optional = false)
-    @JoinColumn(name = "id", insertable = false, updatable = false)
-	private Game game;
-    
-	@Column(name = "score")
-    private int score;
-	
-	@Column(name = "name")
-	private String name;
-    
-    
-	public Score(Game game, int score) {
-		this.game = game;
-		this.score = score;
-	}
-    
+    @JoinColumn(name = "game_id", nullable = false)
+    private Game game;
+
+    public Score() {}
+
+    public Score(Game game, int score) {
+        this.game = game;
+        this.score = score;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -50,13 +42,25 @@ public class Score {
     public void setScore(int score) {
         this.score = score;
     }
-    
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
     @Override
-	public String toString() {
-		return "" + score;
-	}
-    
-	public void save() {
-		DAOFactory.getTheFactory().getScoreDAO().saveOrUpdate(this);
+    public String toString() {
+        return "" + score;
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
     }
 }
