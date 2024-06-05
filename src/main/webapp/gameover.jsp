@@ -18,7 +18,11 @@
 		<p>
 			Your Last Score:
 			<%=GameAction.getGame().getLastDigitOfScore()%></p>
-		<s:a action="restart">Restart Game</s:a>
+		<form action="<s:url action='setup' />" method="post">
+			<label for="name">Name:</label> <input type="text" id="name"
+				name="name">
+			<button type="submit" class="start-button">Restart Game</button>
+		</form>
 		<s:a action="mainMenu">Main Menu</s:a>
 	</div>
 </body>

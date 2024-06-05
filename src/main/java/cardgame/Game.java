@@ -22,29 +22,30 @@ public class Game {
     private Card nextCard;
     @Transient
     private Deck deck = new Deck();
+    @Transient
+    private String playerName;
 
     public enum HigherOrLower { HIGHER, LOWER }
 
     public boolean gameTurn(HigherOrLower higherOrLower) {
-        if (!deck.areCardsLeft())
-            return false;
+        if (!deck.areCardsLeft()) return false;
 
-        if (higherOrLower == HigherOrLower.HIGHER && nextCard.isHigherOrEqual(currentCard) || 
-            higherOrLower == HigherOrLower.LOWER && !nextCard.isHigherOrEqual(currentCard)) {
+        if ((higherOrLower == HigherOrLower.HIGHER && nextCard.isHigherOrEqual(currentCard)) || 
+            (higherOrLower == HigherOrLower.LOWER && !nextCard.isHigherOrEqual(currentCard))) {
             currentCard = deck.getNextCard();
             nextCard = deck.getNextCard();
             int newScore = scores.isEmpty() ? 1 : scores.get(scores.size() - 1).getScore() + 1;
-            scores.add(new Score(this, newScore));
+            scores.add(new Score(this, playerName, newScore));
             return true;
         }
 
         return false;
     }
 
-    public void setup() {
+    public void setup(String playerName) {
+        this.playerName = playerName;
         currentCard = deck.getNextCard();
         nextCard = deck.getNextCard();
-        // No initial score is added here
     }
 
     public List<Score> getScores() {
@@ -82,15 +83,14 @@ public class Game {
 
     public void save() {
         System.out.println("Saving game with scores: " + scores);
-        this.id = 1; // Set the ID explicitly to 1
         DAOFactory.getTheFactory().getGameDAO().saveOrUpdate(this);
     }
 
-    public void saveFinalScore(String playerName) {
+    public void saveFinalScore() {
         if (!scores.isEmpty()) {
             Score highestScore = scores.get(scores.size() - 1);
-            highestScore.setPlayerName(playerName);
-            System.out.println("Saving final high score: " + highestScore.getScore());
+            highestScore.setPlayerName(this.playerName);  // Use the playerName from the game instance
+            System.out.println("Saving final high score: " + highestScore.getScore() + ", player name: " + highestScore.getPlayerName());
             DAOFactory.getTheFactory().getScoreDAO().saveOrUpdate(highestScore);
         }
     }

@@ -15,16 +15,19 @@ public class Score {
 
     @Column(name = "player_name")
     private String playerName;
-    
+
     @ManyToOne(optional = false)
     @JoinColumn(name = "game_id", nullable = false)
     private Game game;
 
-    public Score() {}
-
-    public Score(Game game, int score) {
+    public Score(Game game, String playerName, int score) {
         this.game = game;
+        this.playerName = playerName;
         this.score = score;
+    }
+
+    public Score() {
+        // Default constructor
     }
 
     public Integer getId() {
