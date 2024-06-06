@@ -132,15 +132,27 @@
 						top 10</h1>
 				</div>
 				<div class="modal-body text-center">
-					<table class="table">
-						<thead>
-							<tr>
-								<th scope="col">#</th>
-								<th scope="col">Naam</th>
-								<th scope="col">Score</th>
-							</tr>
-						</thead>
-					</table>
+					<div class="leaderboard">
+						<p id="leaderboard">Top 10:</p>
+						<div class="scores">
+							<table class="table">
+								<tr>
+									<th>Player</th>
+									<th>Score</th>
+								</tr>
+								<s:iterator value="#request.topScores" var="score">
+									<tr>
+										<td><p class="playername">
+												<s:property value="#score.playerName" />
+											</p></td>
+										<td><p class="playerscore">
+												<s:property value="#score.score" />
+											</p></td>
+									</tr>
+								</s:iterator>
+							</table>
+						</div>
+					</div>
 				</div>
 				<div class="modal-footer justify-content-center">
 					<button type="button"
