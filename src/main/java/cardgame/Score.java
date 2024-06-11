@@ -27,7 +27,7 @@ public class Score {
     }
 
     public Score() {
-        // Default constructor
+
     }
 
     public Integer getId() {

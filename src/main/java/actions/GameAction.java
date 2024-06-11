@@ -27,7 +27,7 @@ public class GameAction extends ActionSupport {
         System.out.println("Current card: " + game.getCurrentCard() + ", next card: " + game.getNextCard());
 
         if (!game.gameTurn(HigherOrLower.HIGHER)) {
-            game.saveFinalScore();  // Use the playerName from the game instance
+            game.saveFinalScore();
             return "gameover";
         }
 
@@ -42,7 +42,7 @@ public class GameAction extends ActionSupport {
         System.out.println("Current card: " + game.getCurrentCard() + ", next card: " + game.getNextCard());
 
         if (!game.gameTurn(HigherOrLower.LOWER)) {
-            game.saveFinalScore();  // Use the playerName from the game instance
+            game.saveFinalScore();
             return "gameover";
         }
 
