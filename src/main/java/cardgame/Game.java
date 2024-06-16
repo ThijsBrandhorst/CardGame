@@ -89,7 +89,7 @@ public class Game {
     public void saveFinalScore() {
         if (!scores.isEmpty()) {
             Score highestScore = scores.get(scores.size() - 1);
-            highestScore.setPlayerName(this.playerName);  // Use the playerName from the game instance
+            highestScore.setPlayerName(this.playerName);
             System.out.println("Saving final high score: " + highestScore.getScore() + ", player name: " + highestScore.getPlayerName());
             DAOFactory.getTheFactory().getScoreDAO().saveOrUpdate(highestScore);
         }
